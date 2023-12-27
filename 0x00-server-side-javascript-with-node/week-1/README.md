@@ -53,22 +53,24 @@ declared using `var`, `let` and `const` keywords
 - Works with variables, allowing it to be used before being declared or initialized
 - Only hoists declarations not initializations
 - Initializion doesn't exist until the code is executed
-- eg `
+- eg
+```
 console.log(name); // Undefined because not yet declared . hoisted by var
 var name; // Declaration
 name = 'Jane'; // Initialization
 console.log(name); // Now returns Jane
-`
-| :---- |:----:|
-|*Operators*| *Operators* |
-|Aritmetic | +  -  /  *  %  \*\*|
-|Assignment| =  +=  -=  \*=  /=  %=  \*\*=|
-|Logical| &&  ||  !|
-|Unary|delete  void  typeof|
-|Comma| , |
-|Relational|in  instanceof  <  >  <=  >=|
-|Tenary| (condition ? if True : False)|
-|Equality|  ==  !=  ===  !==|
+```
+| **Operators** | **Description** |
+|:--------------:|:---------------:|
+| *Arithmetic*   | `+  -  /  *  %  **` |
+| *Assignment*   | `=  +=  -=  *=  /=  %=  **=` |
+| *Logical*      | `&&  ||  !` |
+| *Unary*        | `delete  void  typeof` |
+| *Comma*        | `,` |
+| *Relational*   | `in  instanceof  <  >  <=  >=` |
+| *Ternary*      | `(condition ? if True : if False)` |
+| *Equality*     | `==  !=  ===  !==` |
+
 
 ### Loops
 - Ways to do a single task repeatedly
