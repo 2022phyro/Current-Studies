@@ -31,3 +31,31 @@ Eg for this function that returns a sum
 `function sum(a, b ) {
     return a + b 
 }` 
+
+##  Arrays
+These act as containers for storing different types of data in Node JS like numbers, strings, etc.
+- Enables sequential storage of data
+- Stores variable data like number, string and even other arrays
+- Its elements are accessed using indexing
+- Has variable length hence can store variable number of values
+- An empty array can be crated that can be filled up layer
+### Array operations
+These are various operations that can be appliend on different data structures or specifically array data structures
+| Operation    | Description                                                   | Example                   |
+|--------------|---------------------------------------------------------------|---------------------------|
+| Aggregation  | Combines the array items to one final solution                | `reduce()`               |
+| Traversal    | Iterate through each element of the array                     | `forEach()`              |
+| Modification | Return a new array modified in a particular way or by constraints | `map()`, `filter()`, `slice()` |
+| Removal      | Removes elements from the array                               | `pop()`, `shift()`, `splice()` |
+| Insertion    | Adds elements to the array                                    | `push()`, `unshift()`    |
+| Search       | Find items or values in the array and/or check existence      | `find()`, `indexOf()`    |
+
+Array operations can be carried out on the same array by way of chaining. eg to pass the solutions of a filter function to a map function to transform it and then to pass that to reduce it , we can chain it together
+Eg.
+```//Required: to filter all values greater than 10 from the array and sum their squares
+const array = [1, 2, 3, 11, 5, 15, 3, 12, 13, 10, 7]
+const solution = array.filter((i) => i > 10)
+                    .map((i) => i * i)
+                    .reduce((a, b) => a + b, 0)
+```
+In this case, the methods pass their results to one another like a pipe allowing for simplicity               
