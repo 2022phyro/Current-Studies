@@ -19,14 +19,12 @@ Since it is single threaded, it cannot spawn other threads or call stacks to run
     - Callbacks
     - Promises
     - `Async/Await`
-|*Blocking Operations*|*Non Blocking Operations*|
-|:---|:---|9[<64;22;9M]
-|Both occurs when JavaScript is executed in the Node JS environment|
+     <br>
+|**Blocking Operations**|**Non Blocking Operations**|
+|:---|:---|
+|Both occurs when JavaScript is executed in the Node JS environment||
 |It's when the execution must wait for a non JavaScript task to complete|Does not wait for the non JavaScript operation completes|
-|It usually refers to operations like 
-- file reading and writing
-- network calls
-- database reads||
+|It usually refers to operations like `file reading and writing`, `network calls`, `database reads`||
 |Usually referred to as I/O Operations||
 
 ## Node JS Architecture in a nutshell
