@@ -9,7 +9,13 @@ function oauthProcessor(code, done) {
    * Get the access token for the logged in user
    * 
    */
- 
+  return oauthService.getGithubAccessToken(code, (err, result) => {
+    if (err) {
+      done(err)
+    } else {
+      done(undefined, result)
+    }
+  })
 }
 
 module.exports = {
