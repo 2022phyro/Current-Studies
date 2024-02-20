@@ -19,39 +19,41 @@ Rest APIs are used to view or modify resources on the server without performing 
 - Can be implement useng any platform like PHP, python and node js
 - Highly scalable and flexible
 - Allows communication between server and client even if the client and server are developed using different technologies by means of http.
+
 ## Components of RESTful services
-- **Resources**: 
-    - Building blocks of a RESTful service
-    - Can contain static or dynamic data
-    - Are addressable by URLs
-    - Can have multiple representations
+
+- **Resources**:
+  - Building blocks of a RESTful service
+  - Can contain static or dynamic data
+  - Are addressable by URLs
+  - Can have multiple representations
 - **REST verbs**:
-    - Specifies an action to be performed on a specific resource/collection of resources
-    - In the http request it is sent along with the header information and body
-    - Examples include GET, POST, PUT, etc
+  - Specifies an action to be performed on a specific resource/collection of resources
+  - In the http request it is sent along with the header information and body
+  - Examples include GET, POST, PUT, etc
 - **Request Headers**:
-    - An HTTP header that can be used in an HTTP request to provide information about the request context
-    - eg *Accept* header indicates the allowed or preferred response formats
-    - Can be used to 
-        - Supply authentication credentials
-        - Control caching
-        - Get user agent/referrer information
-    - Not all headers are request headers eg *Content type*
+  - An HTTP header that can be used in an HTTP request to provide information about the request context
+  - eg *Accept* header indicates the allowed or preferred response formats
+  - Can be used to
+    - Supply authentication credentials
+    - Control caching
+    - Get user agent/referrer information
+  - Not all headers are request headers eg *Content type*
 
 - **REST Body**:
-    - Used to send or receive data via the REST API
+  - Used to send or receive data via the REST API
 
 - **Response status code**:
-    - Used to indicate if a request was successful or not
-    - Returns the type of error if it failed
-    - Examples include
-        - 200: ok
-        - 404: not found (error)
-        - 204: empty (success)
+  - Used to indicate if a request was successful or not
+  - Returns the type of error if it failed
+  - Examples include
+    - 200: ok
+    - 404: not found (error)
+    - 204: empty (success)
 
 ## Creating a simple REST service
 
-```
+```javascript
 const http = require('http')
 const PORT = process.env.PORT || 4000
 const server = https.createServer((request, response) => {
