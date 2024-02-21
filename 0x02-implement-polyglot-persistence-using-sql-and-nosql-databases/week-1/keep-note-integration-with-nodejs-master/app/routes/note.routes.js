@@ -36,7 +36,7 @@ module.exports = app => {
     // Retrieve all Note
     router.get("/", (req, res) => {
         try {
-            const title = req.query.note_title;
+            const title = req.query.note_title || null;
             note.findAll(title, (err, results) => {
                 if (err) {
                     // EXITING

@@ -13,11 +13,11 @@ describe('Test Note controller layer', () => {
             "category_id":1,
             "reminder_id":2
         };
-        // var create = sinon.stub(noteService, 'create');
+        var create = sinon.stub(noteService, 'create');
         noteController.create(note, (err, results) => { });
-        // sinon.assert.calledOnceWithMatch(create, note);
-        // done();
-        // create.restore();
+        sinon.assert.calledOnceWithMatch(create, note);
+        done();
+        create.restore();
     });
 
     it('should return all notes', (done) => {
