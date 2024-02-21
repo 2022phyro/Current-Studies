@@ -10,8 +10,8 @@ const app = require("../app");
 
    it("Testing login User API", function (done) {
         let newUser = {
-            "email": "Charles@abc.com",
-            "password": "Charles123"
+            "email": process.env.EMAIL,
+            "password": process.env.PASSWORD
           }
       supertest(app)
         .post("/auth/login")
@@ -33,8 +33,8 @@ const app = require("../app");
     });
     it("Testing login User API with wrong user", function (done) {
       let newUser = {
-        "email": "zzz@abc.com",
-        "password": "zzzz123"
+        "email": process.env.EMAIL1,
+        "password": process.env.PASSWORD1
       }
       supertest(app)
         .post("/auth/login")
