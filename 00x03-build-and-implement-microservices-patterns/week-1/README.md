@@ -1,4 +1,8 @@
-# Monolithic Applications
+# Microservice Architecture
+
+Before we talk about whats so great with microservices lets briefly look at its current competitor
+
+## Monolithic Applications
 
 - A single tiered software application
 - Logic, database, client structure are all combined into a single application
@@ -15,13 +19,12 @@
 - New technology barriers
 - Long term commitment to a tech stack
 
-
 ## Microservices
 
 - An architectural style/approach that develops a single application as a suite of small services
 
 ### Pros
- 
+
 - Modular
 - Single Functionality Principle
 - Asynchronous invocation
