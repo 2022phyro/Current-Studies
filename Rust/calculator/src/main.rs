@@ -2,7 +2,7 @@ use std::io::{stdin, stdout, Write};
 static OPS: [&str; 4] = ["/", "*", "+", "-"];
 
 fn read_question(line: &mut String) {
-    print!("Phyro> ");
+    print!("\x1b[33mPhyro> \x1b[0m");
     let _=stdout().flush();
     stdin().read_line(line).expect("Did not enter a correct string. Please remember the instructions");
 }
@@ -10,37 +10,39 @@ fn read_question(line: &mut String) {
 fn return_num_or_none(text: &str) -> Option<f64> {
     text.parse().ok()
 }
-fn process_values<'a>(op: &str, val: &Vec<&'a str>, heap: &mut Vec<String>) -> Result<(), Box<dyn std::error::Error>> {
+fn process_values<'a>(op: &str, val: &Vec<&'a str>, heap: &mut Vec<String>) -> Result<f64, Box<dyn std::error::Error>> {
     let length = val.len();
-    if let Some(i) = val.iter().position(|&x| OPS.contains(&x)) {
-     //heap.extend_from_slice(&val[0..i - 1]);
-     heap.extend(val[0..i].iter().map(|&s| s.to_string()));
+    if let Some(i) = val.iter().position(|x| *x == op) {
+     heap.extend(val[0..i - 1].iter().map(|&s| s.to_string()));
      if i >= 1 {
         let a: f64 = val[i - 1].parse()?;
+        if i + 1 == length {
+            return Err("Syntax Error!".into());
+        }
         let b: f64 = val[i + 1].parse()?;
+        if b == 0.0 && op == "/" {
+            return Err("Zero division error".into());
+        }
         let current = match op {
-            "/" => a + b,
+            "/" => a / b,
             "*" => a * b,
             "+" => a + b,
             "-" => a - b,
             _ => return Err("Invalid operation".into())
         };
-        println!("{} {} {} {}",current, a, b, op);
         heap.push(current.to_string());
         if length >= i + 2 {
-                //heap.extend_from_slice(&val[i + 2..length]);
                 heap.extend(val[i + 2..length].iter().map(|&s| s.to_string()));
         }
-            return Ok(());
-            
-         
+            return Ok(current);
         }
     }
-    return Err("Operation not valid".into())
+    return Err("Syntax Error!".into());
 }
 fn attempt_line(values: Vec<&str>) -> Result<f64, Box<dyn std::error::Error>>{
     let length = values.len();
     let mut heap = Vec::new();
+    let mut result: Result<f64, Box<dyn std::error::Error>> = Err("Hakuna".into());
 
    match length {
         0 => return Ok(0.0),
@@ -53,14 +55,15 @@ fn attempt_line(values: Vec<&str>) -> Result<f64, Box<dyn std::error::Error>>{
         },
         _ => {
             for op in &OPS {
-                if process_values(op, &values, &mut heap).is_ok() {
+                result = process_values(op, &values, &mut heap);
+                if result.is_ok() {
+                    //println!("{:?}", heap);
                     return attempt_line(heap.iter().map(|s| s.as_str()).collect());
                 }
-                
-             }
-        }
-    }
-    return Err("No operations performed".into())
+            };
+        },
+   }
+    result
 }
 fn print_intro() {
     let name = r#" _____  
@@ -86,11 +89,11 @@ Instructions:
    - `exit`
    - `q`
 
-4. If you enter an invalid expression, the calculator will inform you of the error.
+4. If you enter an invalid expression, the calculator will inform you of syntax error. Please be meaningful.
 
 Happy calculating! 😊
  "#;
-    println!("{}", name)
+    println!("\x1b[36m{}\x1b[0m", name)
 
 }
 fn main() {
@@ -107,10 +110,9 @@ fn main() {
             break;
         }
         let values : Vec<&str> = line.split_whitespace().collect();
-        println!("{:#?}", values);
         match attempt_line(values) {
-            Ok(num) => println!("{}", num),
-            Err(err) => println!("{}", err),
+            Ok(num) => println!("\x1b[32m{}\x1b[0m", num),
+            Err(err) => println!("\x1b[31m{}\x1b[0m", err),
         }
     }
 }
