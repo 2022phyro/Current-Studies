@@ -1,0 +1,1 @@
+/mnt/c/Users/Phyro/Desktop/projects/Current-Studies/Rust-Packt/0x01-Introduction-to-Rust-Programming-and-Core-Concepts/training/target/debug/training: /mnt/c/Users/Phyro/Desktop/projects/Current-Studies/Rust-Packt/0x01-Introduction-to-Rust-Programming-and-Core-Concepts/training/src/main.rs
