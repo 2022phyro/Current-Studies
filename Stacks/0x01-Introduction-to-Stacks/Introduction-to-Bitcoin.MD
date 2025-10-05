@@ -35,3 +35,22 @@ The blockchain is a chain of blocks (A block is a group of transactions..). the 
 * Producing a block is an BP problem. (computationally intensive to solve, but easy to verify solution). Miners race to present their own "version". Once one has found a soultion, it is shared with everyone else. if it's correctt, they win and earn BTC, else, the race continues
 
 ### Network Security
+The peer-to-peer review works as a buffer for network security.
+* The BTC they get from mining a honest work incentivizes them to try to create solutions everyone will agree with; honest solutions
+* If they try a fradulent solution, because they can't get ~50% of the nodes to agree, they lose the computational resources (heavy expenses) spent on trying to create that "solution", so not only do they not gain anything, they also lose something.
+
+### Sybil Resistance.
+PoW is a sybil resistance mechanism, and a block producer selector.
+* Sybil resistance measures how well a protocol can withstand sybil attacks. A sybil attack is when one entity pretends to be many different entities. This could cause these pretenders to gain undue rewards on the chain as they mine. PoW solves this by rewarding the most computational power, not necessarily the most nodes.
+
+### Chain Selection.
+* When the chain diverges, Bitcoin follows the Longest Chain Rule to presrve the fork with the more nodes agreeing to it's variant of the solution. the other block called the **uncle block** will be discarded.
+* PoW and Longest Chain Rule make up the **Nakamoto Consensus**
+* Uncle blocks still get rewards because they created a valid solution, not just to the same amount as the one selected to be the canonical block.
+
+### Finality
+A transactin is considered to have finality when it's impossible for the block to become an uncle block. As the Chain selection process indicates that uncle blocks are wiped out which may cause transactions to be "reversed", finality ensures that the chances of that happening to your transaction approaches 0 as the blockchain grows
+* At around 5 blocks, that probability of wipe-out reduces to 0.0001% and the longer the blocks, the lower the threat.
+
+### Future of Bitcoin.
+Bitcoin created a decentralized currency system. But the concept of blockchain is being adapted to create decentralized computing systems, taking control and ownership of data, and ensuring anonymity.
